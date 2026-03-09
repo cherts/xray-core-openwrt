@@ -26,8 +26,8 @@ jobs:
         include:
           - arch: aarch64_cortex-a53
             runtime_test: false
-          - arch: aarch64_cortex-a72
-            runtime_test: false
+#          - arch: aarch64_cortex-a72
+#            runtime_test: false
 #          - arch: aarch64_cortex-a76
 #            runtime_test: false
 #          - arch: aarch64_generic
