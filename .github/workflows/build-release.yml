@@ -1,4 +1,4 @@
-name: Build and Release
+name: Build xray-core and push release
 
 on:
   push:

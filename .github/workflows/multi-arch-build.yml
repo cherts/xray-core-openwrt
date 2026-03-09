@@ -1,4 +1,4 @@
-name: Build xray-core feed
+name: Build feed
 
 on:
   workflow_dispatch:
