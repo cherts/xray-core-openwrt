@@ -1,1 +1,1 @@
-{"serialNumber":"urn:uuid:1d5deacc-4789-416f-9621-d4d9ab4d0180","metadata":{"timestamp":"2026-03-09T12:53:39Z"},"specVersion":"1.4","components":[{"name":"xray-core","version":"26.2.6","type":"application","licenses":[{"license":{"name":"MPL-2.0"}}]}],"bomFormat":"CycloneDX","version":1}
+{"bomFormat":"CycloneDX","metadata":{"timestamp":"2026-03-09T13:50:39Z"},"specVersion":"1.4","version":1,"components":[{"type":"application","version":"26.2.6","name":"xray-core","licenses":[{"license":{"name":"MPL-2.0"}}]}],"serialNumber":"urn:uuid:54d41cc2-c993-4fbf-8294-a1574a6cb484"}
