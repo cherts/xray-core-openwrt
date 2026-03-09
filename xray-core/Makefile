@@ -30,11 +30,15 @@ GO_PKG_TARGET_VARS:=$(filter-out CGO_ENABLED=%,$(GO_PKG_TARGET_VARS)) CGO_ENABLE
 GO_PKG_DEFAULT_LDFLAGS:=$(filter-out -linkmode external,$(GO_PKG_DEFAULT_LDFLAGS))
 GO_PKG_BUILD_VARS:=$(filter-out GOTOOLCHAIN=%,$(GO_PKG_BUILD_VARS)) GOTOOLCHAIN=go1.25.4+auto
 
-define Package/xray-core
+define Package/xray/template
   TITLE:=A platform for building proxies to bypass network restrictions
   SECTION:=net
   CATEGORY:=Network
   URL:=https://xtls.github.io
+endef
+
+define Package/xray-core
+  $(call Package/xray/template)
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
 endef
 
@@ -43,10 +47,23 @@ define Package/xray-core/description
   It secures your network connections and thus protects your privacy.
 endef
 
+define Package/xray-core/conffiles
+/etc/xray/
+/etc/config/xray
+endef
+
 define Package/xray-core/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/main $(1)/usr/bin/xray
+
+	$(INSTALL_DIR) $(1)/etc/xray/
+	$(INSTALL_DATA) $(CURDIR)/files/config.json.example $(1)/etc/xray/
+
+	$(INSTALL_DIR) $(1)/etc/config/
+	$(INSTALL_CONF) $(CURDIR)/files/xray.conf $(1)/etc/config/xray
+	$(INSTALL_DIR) $(1)/etc/init.d/
+	$(INSTALL_BIN) $(CURDIR)/files/xray.init $(1)/etc/init.d/xray
 endef
 
 $(eval $(call BuildPackage,xray-core))
