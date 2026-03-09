@@ -10,7 +10,8 @@ permissions:
   contents: write
 
 env:
-  PACKAGE_NAME: xray-core
+  PACKAGE_NAME_1: xray-core
+  PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
   OPENWRT_MAJOR: "24.10"
   OPENWRT_VERSION: "24.10.5"
@@ -98,7 +99,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}-openwrt-${{ env.OPENWRT_MAJOR }}
           FEEDNAME: ${{ env.FEED_NAME }}
-          PACKAGES: ${{ env.PACKAGE_NAME }}
+          PACKAGES: ${{ env.PACKAGE_NAME_1 }} ${{ env.PACKAGE_NAME_2 }}
           NO_REFRESH_CHECK: 1
           INDEX: 1
           KEY_BUILD: ${{ secrets.USIGN_KEY }}
@@ -111,11 +112,12 @@ jobs:
           git checkout ${{ env.OPENWRT_VERSION }}
           git pull
           rm -f *.ipk || true
-          cp ./bin/packages/${{ matrix.arch }}/xray_core/* . || true
+          ls -L1 ./bin/packages/${{ matrix.arch }}
+          for PKG in $(ls -L1 ./bin/packages/${{ matrix.arch }}); do cp ./bin/packages/${{ matrix.arch }}/${PKG}/* . || true; done
           git add Packages
           git add Packages.*
           git add *.ipk
-          git commit -m "Add xray_core binary via workflow"
+          git commit -m "Add binary via workflow"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
