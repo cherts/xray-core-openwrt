@@ -4,11 +4,11 @@ Depends: libc, ca-bundle
 License: MPL-2.0
 Section: net
 URL: https://xtls.github.io
-Architecture: aarch64_cortex-a72
+Architecture: aarch64_cortex-a53
 Installed-Size: 29583360
-Filename: xray-core_26.2.6-r1_aarch64_cortex-a72.ipk
-Size: 10517025
-SHA256sum: 0e25fe34118319c205f2e5333b50b37c273040d319efea070bf5b9c61e5449b3
+Filename: xray-core_26.2.6-r1_aarch64_cortex-a53.ipk
+Size: 10517024
+SHA256sum: 45c71b06afefd10fad91843b7b0a3c7dfbbdf584e533578a3849ea5fa0477b15
 Description:  Xray, Penetrates Everything. It helps you to build your own computer network.
  It secures your network connections and thus protects your privacy.
 
