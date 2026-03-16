@@ -1,12 +1,12 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=xray-geodata-cut
-PKG_VERSION:=751dc61c067193aaf71155bc637c92d60b520af6
+PKG_VERSION:=1.0.2
 PKG_RELEASE:=1
 
 PKG_SOURCE:=xray-geodata-cut-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://codeload.github.com/yichya/xray-geodata-cut/tar.gz/${PKG_VERSION}?
-PKG_HASH:=a5add837f9c949e3168c30d8698e9414beb1bd545720982104d945d64bf7f24f
+PKG_SOURCE_URL:=https://codeload.github.com/cherts/xray-geodata-cut/tar.gz/${PKG_VERSION}?
+PKG_HASH:=32a6b9faee66ef27dca23f3053bc92c62272fa35702bbddc40da0bb97e570a02
 
 PKG_MAINTAINER:=Mikhail Grigorev <sleuthhound@gmail.com>
 PKG_LICENSE:=MPL-2.0
