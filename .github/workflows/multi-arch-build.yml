@@ -11,6 +11,7 @@ permissions:
 
 env:
   PACKAGE_NAME_1: xray-core
+  PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
   OPENWRT_MAJOR: "24.10"
   OPENWRT_VERSION: "24.10.6"
@@ -108,8 +109,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout -b ${{ env.OPENWRT_VERSION }} || git checkout ${{ env.OPENWRT_VERSION }}
-          git pull
+          git checkout -b ${{ env.OPENWRT_VERSION }} && rm -rf ${{ env.PACKAGE_NAME_1 }}; rm -rf ${{ env.PACKAGE_NAME_2 }}; rm -rf .github || git checkout ${{ env.OPENWRT_VERSION }} && git pull
           rm -f *.ipk || true
           ls -L1 ./bin/packages/${{ matrix.arch }}
           for PKG in $(ls -L1 ./bin/packages/${{ matrix.arch }}); do cp ./bin/packages/${{ matrix.arch }}/${PKG}/* . || true; done
