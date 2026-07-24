@@ -11,7 +11,6 @@ permissions:
 
 env:
   PACKAGE_NAME_1: xray-core
-  PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
   OPENWRT_MAJOR: "24.10"
   OPENWRT_VERSION: "24.10.6"
@@ -99,7 +98,7 @@ jobs:
         env:
           ARCH: ${{ matrix.arch }}-openwrt-${{ env.OPENWRT_MAJOR }}
           FEEDNAME: ${{ env.FEED_NAME }}
-          PACKAGES: ${{ env.PACKAGE_NAME_1 }} ${{ env.PACKAGE_NAME_2 }}
+          PACKAGES: ${{ env.PACKAGE_NAME_1 }}
           NO_REFRESH_CHECK: 1
           INDEX: 1
           KEY_BUILD: ${{ secrets.USIGN_KEY }}
