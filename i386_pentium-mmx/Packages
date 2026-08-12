@@ -1,0 +1,14 @@
+Package: xray-core
+Version: 26.2.6-r1
+Depends: libc, ca-bundle
+License: MPL-2.0
+Section: net
+URL: https://xtls.github.io
+Architecture: i386_pentium-mmx
+Installed-Size: 29696000
+Filename: xray-core_26.2.6-r1_i386_pentium-mmx.ipk
+Size: 10956661
+SHA256sum: df58bd7960107d1ef40df6532ff27bd48813105456528eb16a001a3b25663430
+Description:  Xray, Penetrates Everything. It helps you to build your own computer network.
+ It secures your network connections and thus protects your privacy.
+
