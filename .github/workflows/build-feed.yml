@@ -109,7 +109,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout ${{ env.OPENWRT_VERSION }} && git pull || git checkout -b ${{ env.OPENWRT_VERSION }} 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_1 }}" 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_2 }}" 2>/dev/null; rm -rf ".github" 2>/dev/null
+          git pull 2>/dev/null || true
+          git checkout ${{ env.OPENWRT_VERSION }} && git pull 2>/dev/null || git checkout -b ${{ env.OPENWRT_VERSION }} 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_1 }}" 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_2 }}" 2>/dev/null; rm -rf ".github" 2>/dev/null
           mkdir "${{ matrix.arch }}" 2>/dev/null || true
           for PKG in $(ls -L1 "./bin/packages/${{ matrix.arch }}" 2>/dev/null); do cp ./bin/packages/${{ matrix.arch }}/${PKG}/* ${{ matrix.arch }}/ 2>/dev/null || true; done
           git add . 2>/dev/null || true
