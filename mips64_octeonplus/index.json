@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "architecture": "mips64_octeonplus",
+  "packages": {
+    "xray-core": "26.2.6-r1"
+  }
+}
