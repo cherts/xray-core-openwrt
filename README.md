@@ -8,9 +8,9 @@ Packages for different platforms contain init scripts and other default files.
 
 | OpenWRT | xray-core |
 |---------|-----------|
-| 24.10.5 | 26.2.6    |
-| 24.10.6 | 26.2.6    |
-| 24.10.7 | 26.2.6    |
+| 24.10.0 | 26.2.6    |
+| ....... | ......    |
+| ....... | ......    |
 | 24.10.8 | 26.2.6    |
 
 ## How to install
