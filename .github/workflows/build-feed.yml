@@ -28,8 +28,6 @@ env:
   PACKAGE_NAME_1: xray-core
   PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
-  OPENWRT_MAJOR: $(echo ${{ inputs.owrt_version }} | cut -d'.' -f1-2)
-  OPENWRT_VERSION: ${{ inputs.owrt_version }}
 
 jobs:
   build:
@@ -104,6 +102,12 @@ jobs:
             runtime_test: true
 
     steps:
+      - name: Set environment
+        id: owrt_env
+        run: |
+          echo OPENWRT_MAJOR="$(echo ${{ inputs.owrt_version }} | cut -d'.' -f1-2)" >>$GITHUB_OUTPUT
+          echo OPENWRT_VERSION="${{ inputs.owrt_version }}" >>$GITHUB_OUTPUT
+
       - name: Checkout
         uses: actions/checkout@v7
         with:
@@ -112,7 +116,7 @@ jobs:
       - name: Build
         uses: openwrt/gh-action-sdk@v11
         env:
-          ARCH: ${{ matrix.arch }}-openwrt-${{ env.OPENWRT_MAJOR }}
+          ARCH: ${{ matrix.arch }}-openwrt-${{ steps.owrt_env.outputs.OPENWRT_MAJOR }}
           FEEDNAME: ${{ env.FEED_NAME }}
           PACKAGES: ${{ env.PACKAGE_NAME_1 }}
           NO_REFRESH_CHECK: 1
@@ -125,17 +129,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           git pull 2>/dev/null || true
-          git checkout ${{ env.OPENWRT_VERSION }} && git pull 2>/dev/null || git checkout -b ${{ env.OPENWRT_VERSION }} 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_1 }}" 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_2 }}" 2>/dev/null; rm -rf ".github" 2>/dev/null
+          git checkout ${{ steps.owrt_env.outputs.OPENWRT_VERSION }} && git pull 2>/dev/null || git checkout -b ${{ steps.owrt_env.outputs.OPENWRT_VERSION }} 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_1 }}" 2>/dev/null; rm -rf "${{ env.PACKAGE_NAME_2 }}" 2>/dev/null; rm -rf ".github" 2>/dev/null
           mkdir "${{ matrix.arch }}" 2>/dev/null || true
           for PKG in $(ls -L1 "./bin/packages/${{ matrix.arch }}" 2>/dev/null); do cp ./bin/packages/${{ matrix.arch }}/${PKG}/* ${{ matrix.arch }}/ 2>/dev/null || true; done
           git add . 2>/dev/null || true
-          git commit -m "Add binary openwrt-${{ env.OPENWRT_VERSION }}/${{ matrix.arch }} via workflow"
+          git commit -m "Add binary openwrt-${{ steps.owrt_env.outputs.OPENWRT_VERSION }}/${{ matrix.arch }} via workflow"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.CUSTOM_TOKEN }}
-          branch: ${{ env.OPENWRT_VERSION }}
+          branch: ${{ steps.owrt_env.outputs.OPENWRT_VERSION }}
 
       - name: Store packages
         uses: actions/upload-artifact@v6
