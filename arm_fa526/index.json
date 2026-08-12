@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "architecture": "arm_fa526",
+  "packages": {
+    "xray-core": "26.2.6-r1"
+  }
+}
