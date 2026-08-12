@@ -8,15 +8,15 @@ Packages for different platforms contain init scripts and other default files.
 
 | OpenWRT | xray-core |
 |---------|-----------|
-| 24.10.5 | 26.2.6    |
-| 24.10.6 | 26.2.6    |
-| 24.10.7 | 26.2.6    |
+| 24.10.0 | 26.2.6    |
+| ....... | ......    |
+| ....... | ......    |
 | 24.10.8 | 26.2.6    |
 
 ## How to install
 
 ```
-grep -q xray-core /etc/opkg/customfeeds.conf || echo src/gz xray-core https://github.com/cherts/xray-core-openwrt/raw/$(. /etc/openwrt_release && echo "$DISTRIB_RELEASE")/$(. /etc/openwrt_release && echo "DISTRIB_ARCH") >> /etc/opkg/customfeeds.conf
+grep -q xray-core /etc/opkg/customfeeds.conf || echo src/gz xray-core https://github.com/cherts/xray-core-openwrt/raw/$(. /etc/openwrt_release && echo "$DISTRIB_RELEASE")/$(. /etc/openwrt_release && echo "$DISTRIB_ARCH") >> /etc/opkg/customfeeds.conf
 wget https://github.com/cherts/xray-core-openwrt/raw/main/xray-core.pub -O /tmp/xray-core.pub && opkg-key add /tmp/xray-core.pub
 opkg update
 opkg install v2ray-geoip xray-core
