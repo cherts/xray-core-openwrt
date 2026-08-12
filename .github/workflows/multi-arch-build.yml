@@ -90,7 +90,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -109,10 +109,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          git checkout -b ${{ env.OPENWRT_VERSION }} && rm -rf ${{ env.PACKAGE_NAME_1 }}; rm -rf ${{ env.PACKAGE_NAME_2 }}; rm -rf .github || git checkout ${{ env.OPENWRT_VERSION }} && git pull
-          rm -f *.ipk || true
+          git checkout ${{ env.OPENWRT_VERSION }} && git pull || git checkout -b ${{ env.OPENWRT_VERSION }} 2>/dev/null; rm -rf ./${{ env.PACKAGE_NAME_1 }} 2>/dev/null; rm -rf ./${{ env.PACKAGE_NAME_2 }} 2>/dev/null; rm -rf ./.github 2>/dev/null
+          rm -f *.ipk 2>/dev/null || true
           ls -L1 ./bin/packages/${{ matrix.arch }}
-          for PKG in $(ls -L1 ./bin/packages/${{ matrix.arch }}); do cp ./bin/packages/${{ matrix.arch }}/${PKG}/* . || true; done
+          for PKG in $(ls -L1 "./bin/packages/${{ matrix.arch }}" 2>/dev/null); do cp ./bin/packages/${{ matrix.arch }}/${PKG}/* . 2>/dev/null || true; done
           git add Packages
           git add Packages.*
           git add *.ipk
