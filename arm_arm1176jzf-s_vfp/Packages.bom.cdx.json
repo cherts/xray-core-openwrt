@@ -1,0 +1,1 @@
+{"metadata":{"timestamp":"2026-08-12T13:28:41Z"},"specVersion":"1.4","serialNumber":"urn:uuid:11da8ab3-b671-482a-9083-9d94787fc7f6","version":1,"bomFormat":"CycloneDX","components":[{"name":"xray-core","version":"26.2.6","type":"application","licenses":[{"license":{"name":"MPL-2.0"}}]}]}
