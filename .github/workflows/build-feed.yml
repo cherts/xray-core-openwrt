@@ -33,7 +33,7 @@ env:
 
 jobs:
   build:
-    name: Build openwrt-${{ env.OPENWRT_MAJOR }}/${{ matrix.arch }}
+    name: Build from ${{ matrix.arch }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
