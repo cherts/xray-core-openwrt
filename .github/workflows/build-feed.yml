@@ -140,5 +140,5 @@ jobs:
 
       - name: Remove logs and other
         run: |
-          sudo rm -rf ./logs/ || true
-          sudo rm -rf ./bin/ || true
+          sudo rm -rf ./logs 2>/dev/null || true
+          sudo rm -rf ./bin 2>/dev/null || true
