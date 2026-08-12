@@ -37,22 +37,22 @@ define Package/xray/template
   URL:=https://xtls.github.io
 endef
 
-define Package/xray-core
+define Package/$(PKG_NAME)
   $(call Package/xray/template)
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
 endef
 
-define Package/xray-core/description
+define Package/$(PKG_NAME)/description
   Xray, Penetrates Everything. It helps you to build your own computer network.
   It secures your network connections and thus protects your privacy.
 endef
 
-define Package/xray-core/conffiles
+define Package/$(PKG_NAME)/conffiles
 /etc/xray/
 /etc/config/xray
 endef
 
-define Package/xray-core/install
+define Package/$(PKG_NAME)/install
 	$(call GoPackage/Package/Install/Bin,$(PKG_INSTALL_DIR))
 	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/bin/main $(1)/usr/bin/xray
@@ -66,4 +66,4 @@ define Package/xray-core/install
 	$(INSTALL_BIN) $(CURDIR)/files/xray.init $(1)/etc/init.d/xray
 endef
 
-$(eval $(call BuildPackage,xray-core))
+$(eval $(call BuildPackage,$(PKG_NAME)))
