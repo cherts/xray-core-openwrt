@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "architecture": "loongarch64_generic",
+  "packages": {
+    "xray-core": "26.2.6-r1"
+  }
+}
