@@ -14,7 +14,7 @@ env:
   PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
   OPENWRT_MAJOR: "24.10"
-  OPENWRT_VERSION: "24.10.7"
+  OPENWRT_VERSION: "24.10.8"
 
 jobs:
   build:
@@ -27,66 +27,66 @@ jobs:
         include:
           - arch: aarch64_cortex-a53
             runtime_test: false
-#          - arch: aarch64_cortex-a72
-#            runtime_test: false
-#          - arch: aarch64_cortex-a76
-#            runtime_test: false
-#          - arch: aarch64_generic
-#            runtime_test: true
-#          - arch: arm_arm1176jzf-s_vfp
-#            runtime_test: false
-#          - arch: arm_arm926ej-s
-#            runtime_test: false
-#          - arch: arm_cortex-a15_neon-vfpv4
-#            runtime_test: true
-#          - arch: arm_cortex-a5_vfpv4
-#            runtime_test: false
-#          - arch: arm_cortex-a7
-#            runtime_test: false
-#          - arch: arm_cortex-a7_neon-vfpv4
-#            runtime_test: false
-#          - arch: arm_cortex-a8_vfpv3
-#            runtime_test: false
-#          - arch: arm_cortex-a9
-#            runtime_test: false
-#          - arch: arm_cortex-a9_neon
-#            runtime_test: false
-#          - arch: arm_cortex-a9_vfpv3-d16
-#            runtime_test: false
-#          - arch: arm_fa526
-#            runtime_test: false
-#          - arch: arm_xscale
-#            runtime_test: false
-#          - arch: i386_pentium-mmx
-#            runtime_test: true
-#          - arch: i386_pentium4
-#            runtime_test: false
-#          - arch: loongarch64_generic
-#            runtime_test: false
-#          - arch: mips64_mips64r2
-#            runtime_test: false
-#          - arch: mips64_octeonplus
-#            runtime_test: false
-#          - arch: mips64el_mips64r2
-#            runtime_test: false
-#          - arch: mips_24kc
-#            runtime_test: true
-#          - arch: mips_4kec
-#            runtime_test: false
-#          - arch: mips_mips32
-#            runtime_test: false
-#          - arch: mipsel_24kc
-#            runtime_test: false
-#          - arch: mipsel_24kc_24kf
-#            runtime_test: false
-#          - arch: mipsel_74kc
-#            runtime_test: false
-#          - arch: mipsel_mips32
-#            runtime_test: false
-#          - arch: riscv64_riscv64
-#            runtime_test: false
-#          - arch: x86_64
-#            runtime_test: true
+          - arch: aarch64_cortex-a72
+            runtime_test: false
+          - arch: aarch64_cortex-a76
+            runtime_test: false
+          - arch: aarch64_generic
+            runtime_test: true
+          - arch: arm_arm1176jzf-s_vfp
+            runtime_test: false
+          - arch: arm_arm926ej-s
+            runtime_test: false
+          - arch: arm_cortex-a15_neon-vfpv4
+            runtime_test: true
+          - arch: arm_cortex-a5_vfpv4
+            runtime_test: false
+          - arch: arm_cortex-a7
+            runtime_test: false
+          - arch: arm_cortex-a7_neon-vfpv4
+            runtime_test: false
+          - arch: arm_cortex-a8_vfpv3
+            runtime_test: false
+          - arch: arm_cortex-a9
+            runtime_test: false
+          - arch: arm_cortex-a9_neon
+            runtime_test: false
+          - arch: arm_cortex-a9_vfpv3-d16
+            runtime_test: false
+          - arch: arm_fa526
+            runtime_test: false
+          - arch: arm_xscale
+            runtime_test: false
+          - arch: i386_pentium-mmx
+            runtime_test: true
+          - arch: i386_pentium4
+            runtime_test: false
+          - arch: loongarch64_generic
+            runtime_test: false
+          - arch: mips64_mips64r2
+            runtime_test: false
+          - arch: mips64_octeonplus
+            runtime_test: false
+          - arch: mips64el_mips64r2
+            runtime_test: false
+          - arch: mips_24kc
+            runtime_test: true
+          - arch: mips_4kec
+            runtime_test: false
+          - arch: mips_mips32
+            runtime_test: false
+          - arch: mipsel_24kc
+            runtime_test: false
+          - arch: mipsel_24kc_24kf
+            runtime_test: false
+          - arch: mipsel_74kc
+            runtime_test: false
+          - arch: mipsel_mips32
+            runtime_test: false
+          - arch: riscv64_riscv64
+            runtime_test: false
+          - arch: x86_64
+            runtime_test: true
 
     steps:
       - name: Checkout
