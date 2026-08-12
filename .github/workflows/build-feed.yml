@@ -2,6 +2,21 @@ name: Build feed
 
 on:
   workflow_dispatch:
+    inputs:
+      owrt_version:
+        description: 'Select OpenWRT version'
+        type: choice
+        required: true
+        options:
+          - 24.10.0
+          - 24.10.1
+          - 24.10.2
+          - 24.10.3
+          - 24.10.4
+          - 24.10.5
+          - 24.10.6
+          - 24.10.7
+          - 24.10.8
   release:
     types:
       - published
@@ -13,12 +28,12 @@ env:
   PACKAGE_NAME_1: xray-core
   PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
-  OPENWRT_MAJOR: "24.10"
-  OPENWRT_VERSION: "24.10.8"
+  OPENWRT_MAJOR: $(echo ${{ inputs.owrt_version }} | cut -d'.' -f1-2)
+  OPENWRT_VERSION: ${{ inputs.owrt_version }}
 
 jobs:
   build:
-    name: Build packages for ${{ matrix.arch }}
+    name: Build openwrt-${{ env.OPENWRT_MAJOR }}/${{ matrix.arch }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
