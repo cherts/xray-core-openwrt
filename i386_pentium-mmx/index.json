@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "architecture": "i386_pentium-mmx",
+  "packages": {
+    "xray-core": "26.2.6-r1"
+  }
+}
