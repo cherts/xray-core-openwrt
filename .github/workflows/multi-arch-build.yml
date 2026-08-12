@@ -14,7 +14,7 @@ env:
   PACKAGE_NAME_2: xray-geodata-cut
   FEED_NAME: xray_core
   OPENWRT_MAJOR: "24.10"
-  OPENWRT_VERSION: "24.10.6"
+  OPENWRT_VERSION: "24.10.7"
 
 jobs:
   build:
